@@ -78,11 +78,13 @@ def results():
         totals = c.fetchall()
     return render_template("results.html", title="Results", recent=recent, totals=totals)
    
-    @app.before_first_request
+@app.before_first_request
 def _init_db_once():
     init_db()
-import os
+
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    init_db()  # create tables locally
     app.run(host="0.0.0.0", port=port)
 
