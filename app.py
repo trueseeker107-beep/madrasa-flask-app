@@ -81,9 +81,7 @@ def results():
     @app.before_first_request
 def _init_db_once():
     init_db()
-
 import os
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  
     app.run(host="0.0.0.0", port=port)
