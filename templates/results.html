@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Totals by Student</h2>
+<table>
+  <thead><tr><th>Student ID</th><th>Name</th><th>Total</th></tr></thead>
+  <tbody>
+  {% for sid, sname, total in totals %}
+    <tr><td>{{sid}}</td><td>{{sname}}</td><td>{{'%.1f'|format(total)}}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<h2 style="margin-top:24px">Recent Scores</h2>
+<table>
+  <thead><tr><th>Time</th><th>Programme</th><th>Student</th><th>Judge</th><th>Score</th><th>Remarks</th></tr></thead>
+  <tbody>
+  {% for row in recent %}
+    <tr>
+      <td>{{row[6]}}</td>
+      <td>{{row[0]}}</td>
+      <td>{{row[1]}} — {{row[2]}}</td>
+      <td>{{row[3]}}</td>
+      <td>{{row[4]}}</td>
+      <td>{{row[5]}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

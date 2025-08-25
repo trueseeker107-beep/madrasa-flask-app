@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Judges Portal</h2>
+<form method="post" class="form">
+  <label>Programme Code
+    <input name="programme_code" required placeholder="e.g. PBS01">
+  </label>
+  <label>Student ID
+    <input name="student_id" required placeholder="e.g. ABJ08">
+  </label>
+  <label>Student Name
+    <input name="student_name" required>
+  </label>
+  <label>Judge Name
+    <input name="judge_name" required>
+  </label>
+  <label>Score
+    <input type="number" step="0.1" min="0" name="score" required>
+  </label>
+  <label>Remarks
+    <textarea name="remarks" rows="2"></textarea>
+  </label>
+  <button type="submit">Save Score</button>
+</form>
+{% endblock %}
