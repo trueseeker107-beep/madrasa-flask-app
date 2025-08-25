@@ -77,7 +77,14 @@ def results():
         """)
         totals = c.fetchall()
     return render_template("results.html", title="Results", recent=recent, totals=totals)
+   
+    @app.before_first_request
+def _init_db_once():
+    init_db()
+
+import os
 
 if __name__ == "__main__":
-    init_db()
-    app.run(debug=True, host="0.0.0.0")
+    port = int(os.environ.get("PORT", 5000))  
+    app.run(host="0.0.0.0", port=port)
+
