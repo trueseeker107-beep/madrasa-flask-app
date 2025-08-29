@@ -1,5 +1,51 @@
-{% extends "base.html" %}
-{% block content %}
-<h2>Welcome</h2>
-<p>Use the navigation above. Judges can submit scores; results page shows totals per student.</p>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ title or "Madrasa Fest" }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 0; padding: 0 16px; }
+    header { padding: 16px 0; }
+    h1 { margin: 12px 0; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 12px; }
+    .card { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 14px; box-shadow: 0 2px 10px rgba(0,0,0,.05); }
+    .card h2 { margin: 0 0 8px; font-size: 1.1rem; }
+    .btn { display: inline-block; margin-top: 8px; padding: 8px 12px; background: #0f766e; color: #fff; text-decoration: none; border-radius: 8px; }
+    .btn:hover { filter: brightness(.95); }
+    ul { margin: 8px 0 0 18px; }
+    footer { margin: 24px 0; color: #666; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Madrasa Arts Fest</h1>
+    <p>Welcome! Use the links below to enter scores and view results.</p>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Judges Portal</h2>
+      <p>Enter programme code, student details, and scores.</p>
+      <a class="btn" href="{{ url_for('judges') }}">Go to Judges →</a>
+    </div>
+
+    <div class="card">
+      <h2>Results & Leaderboard</h2>
+      <p>See recent entries and total scores per student.</p>
+      <a class="btn" href="{{ url_for('results') }}">View Results →</a>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <h2>How it works</h2>
+    <ul>
+      <li>Judges submit scores in the Judges Portal.</li>
+      <li>Results page shows recent entries and totals per student.</li>
+      <li>You can delete a wrong entry from the Results page.</li>
+    </ul>
+  </div>
+
+  <footer>© 2025 Noorul Ulama H.S. Madrasa</footer>
+</body>
+</html>
